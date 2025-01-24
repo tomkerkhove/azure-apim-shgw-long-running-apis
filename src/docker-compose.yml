@@ -1,0 +1,19 @@
+services:
+  longrunning.api:
+    image: longrunning.api
+    build:
+      context: LongRunning.API
+      dockerfile: Dockerfile
+
+  self-hosted-gateway:
+    image: mcr.microsoft.com/azure-api-management/gateway:latest
+    container_name: Self-Hosted
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - config.service.endpoint=<configuration API endpoint, see portal>
+      - config.service.auth=<auth, see portal>
+      - net.client.http.call-timeout=00:30:00
+      - net.client.tcp.connection.timeouts.idle=00:30:00
+    restart: always

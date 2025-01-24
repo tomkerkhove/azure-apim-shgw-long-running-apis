@@ -1,0 +1,61 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Timeout API",
+        "description": "",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://grpc-demos.azure-api.net/timeout"
+        },
+        {
+            "url": "https://grpc-demos.azure-api.net/timeout"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Timeout",
+                "operationId": "679264a1f549735d4dc99874",
+                "parameters": [
+                    {
+                        "name": "timeoutInSeconds",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": ""
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "Ocp-Apim-Subscription-Key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "subscription-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ]
+}
