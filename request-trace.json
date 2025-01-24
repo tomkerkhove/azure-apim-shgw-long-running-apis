@@ -1,0 +1,194 @@
+{
+  "issuer": null,
+  "serviceName": "<name>",
+  "traceId": "e7b1689f-5578-4a1c-bdb0-d875a0df26c2",
+  "traceEntries": {
+    "inbound": [
+      {
+        "source": "api-inspector",
+        "timestamp": "2025-01-24T09:45:41.3078483Z",
+        "elapsed": "00:00:00.2329332",
+        "data": {
+          "request": {
+            "scheme": {
+              "received": "http",
+              "original": "http"
+            },
+            "method": "GET",
+            "url": "http://localhost:8080/timeout/?timeoutInSeconds=450",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": "application/json,text/plain,*/*"
+              },
+              {
+                "name": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "name": "Host",
+                "value": "localhost:8080"
+              },
+              {
+                "name": "User-Agent",
+                "value": "axios/1.7.2"
+              },
+              {
+                "name": "Accept-Encoding",
+                "value": "gzip,compress,deflate,br"
+              },
+              {
+                "name": "request-start-time",
+                "value": "1737711940927"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "source": "api-inspector",
+        "timestamp": "2025-01-24T09:45:41.3125118Z",
+        "elapsed": "00:00:00.2372639",
+        "data": {
+          "configuration": {
+            "api": {
+              "from": "/timeout",
+              "to": {
+                "scheme": "http",
+                "host": "longrunning.api",
+                "port": 8088,
+                "path": "/long-running",
+                "queryString": "",
+                "query": {
+
+                },
+                "isDefaultPort": false
+              },
+              "version": null,
+              "revision": "1"
+            },
+            "operation": {
+              "method": "GET",
+              "uriTemplate": "/"
+            },
+            "user": "-",
+            "product": "-"
+          }
+        }
+      },
+      {
+        "source": "cors",
+        "timestamp": "2025-01-24T09:45:41.8806333Z",
+        "elapsed": "00:00:00.8053854",
+        "data": "Origin header was missing or empty and the request was classified as not cross-domain. CORS policy was not applied."
+      },
+      {
+        "source": "rewrite-uri",
+        "timestamp": "2025-01-24T09:45:41.8884964Z",
+        "elapsed": "00:00:00.8132473",
+        "data": {
+          "message": "Updated request URL per specified rewrite template.",
+          "request": {
+            "url": "http://longrunning.api:8088/long-running/?timeoutInSeconds=450"
+          }
+        }
+      }
+    ],
+    "backend": [
+      {
+        "source": "request-forwarder",
+        "timestamp": "2025-01-24T09:45:41.9251095Z",
+        "elapsed": "00:00:00.8498637",
+        "data": {
+          "message": "Request is being forwarded to the backend service. Timeout set to 1800 seconds",
+          "request": {
+            "method": "GET",
+            "protocol": "http",
+            "url": "http://longrunning.api:8088/long-running/?timeoutInSeconds=450",
+            "proxyUrl": null,
+            "headers": [
+              {
+                "name": "Host",
+                "value": "longrunning.api"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json,text/plain,*/*"
+              },
+              {
+                "name": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "name": "Host",
+                "value": "localhost:8080"
+              },
+              {
+                "name": "User-Agent",
+                "value": "axios/1.7.2"
+              },
+              {
+                "name": "Accept-Encoding",
+                "value": "gzip,compress,deflate,br"
+              },
+              {
+                "name": "X-Forwarded-For",
+                "value": "172.21.0.1"
+              },
+              {
+                "name": "request-start-time",
+                "value": "1737711940927"
+              },
+              {
+                "name": "Request-Id",
+                "value": "|8e73d1f0-47ac8389165af868.8e73d1f1_"
+              },
+              {
+                "name": "Request-Context",
+                "value": "appId=cid-v1:e0e7bcb3-e593-4ff2-a186-769f8027d2ec"
+              }
+            ],
+            "clientCertificates": []
+          }
+        }
+      },
+      {
+        "source": "forward-request",
+        "timestamp": "2025-01-24T09:53:12.5224571Z",
+        "elapsed": "00:07:31.4822256",
+        "data": {
+          "response": {
+            "status": {
+              "code": 200,
+              "reason": "OK"
+            },
+            "headers": [
+              {
+                "name": "Content-Length",
+                "value": "0"
+              },
+              {
+                "name": "Date",
+                "value": "Fri, 24 Jan 2025 09:53:11 GMT"
+              },
+              {
+                "name": "Server",
+                "value": "Kestrel"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "outbound": [
+      {
+        "source": "transfer-response",
+        "timestamp": "2025-01-24T09:53:12.5675284Z",
+        "elapsed": "00:07:31.5272756",
+        "data": {
+          "message": "Response has been sent to the caller in full"
+        }
+      }
+    ]
+  }
+}
